@@ -131,3 +131,46 @@ for (space, name) in nameByParkingSpace {
 
 // ENUMERATIONS AND THE SWITCH STATEMENT
 // an enumeration is a type with a discrete set of values. 
+
+enum PieType {
+    case apple
+    case cherry
+    case pecan
+}
+
+let favoritePie = PieType.apple
+
+let name: String
+switch favoritePie {
+    case .apple:    name = "Apple"
+    case .cherry:   name = "Cherry"
+    case .pecan:    name = "Pecan"
+}
+
+let macOSVersion: Int = 13
+switch macOSVersion {
+case 0...8:
+    print ("A big cat")
+case 9:
+    print ("Mavericks")
+case 10:
+    print ("Yosemite")
+case 11:
+    print ("El Capitan")
+case 12:
+    print ("Sierra")
+default:
+    print("Greetings, people of the future! What's new in 10.\(macOSVersion)?")
+    
+}
+
+enum PieType2: Int {
+    case apple = 0
+    case cherry
+    case pecan
+}
+
+let pieRawValue = PieType2.pecan.rawValue  // pieRawValue is an Int with a value of 2
+if let pieType = PieType2(rawValue: pieRawValue) {
+    // got a valid 'pieType'
+}
