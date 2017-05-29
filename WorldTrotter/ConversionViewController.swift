@@ -60,11 +60,6 @@ class ConversionviewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateCelsiusLabel()
-    }
-    
     // Using a delegate.
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -84,6 +79,27 @@ class ConversionviewController: UIViewController, UITextFieldDelegate {
         }
         else {
             return true
+        }
+    }
+
+    
+    // OVERRIDE FUNCTIONS
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateCelsiusLabel()
+    }
+    
+    // can put some init code here -- this is called each time the view controller's view appears on screen
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        // Depending on the time of day. return a light or dark color.  Right now this is hard coded so between 6pm and 6am a dark color is returned
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        if (hour <= 6 || hour >= 18) {
+            view?.backgroundColor = UIColor.darkGray
         }
     }
 }
