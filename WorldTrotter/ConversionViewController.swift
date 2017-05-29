@@ -69,19 +69,20 @@ class ConversionviewController: UIViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        // Prevent user from enering two decimal points
+        // Prevent user from entering two decimal points
         let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
         let replacementTextHasDecimalSeparator = string.range(of: ".")
         
-        /*
-        let existingTextHasAlpha = textField.text?.rangeOfCharacter(from: NSCharacterSet.letters)
+        // Prevent user from entering alphabetic characters
         let replacementTextHasAlpha = string.rangeOfCharacter(from: NSCharacterSet.letters)
         
-        */
-        
-        if existingTextHasDecimalSeparator != nil, replacementTextHasDecimalSeparator != nil {
+        if existingTextHasDecimalSeparator != nil, replacementTextHasDecimalSeparator != nil
+            {
             return false
-        } else {
+        } else if replacementTextHasAlpha != nil {
+            return false
+        }
+        else {
             return true
         }
     }
